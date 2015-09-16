@@ -13,7 +13,7 @@ var controller = dualShock(
     });
 
 var client = arDrone.createClient();
-
+client.calibrate(0);
 function s(msg) {
     console.log(msg);
 }
