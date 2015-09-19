@@ -27,11 +27,13 @@ controller.on('error', function (data) {
 
 //add event handlers:
 controller.on('left:move', function (data) {
-    s("left: " + data);
+    s("left: ");
+    s(data);
     client.left(0.5);
 });
 controller.on('right:move', function (data) {
-    s("right: " + data);
+    s("right: ");
+    s(data);
     client.left(0.5);
 });
 controller.on('connected', function (data) {
