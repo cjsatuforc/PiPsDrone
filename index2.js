@@ -13,13 +13,8 @@ var controller = dualShock(
     });
 
 var client = arDrone.createClient();
-<<<<<<< HEAD
-    client.animateLeds('blinkGreen', 5, 2);
-    client.calibrate(0);
-
-=======
+client.animateLeds('blinkGreen', 5, 2);
 client.calibrate(0);
->>>>>>> 68610ccc9d8953bde30f56269e0c3f58b0aa5755
 function s(msg) {
     console.log(msg);
 }
@@ -52,10 +47,10 @@ controller.on('square:press', function (data) {
     });
 });
 
-controller.on('triangle:press', function(data)
+controller.on('circle:press', function(data)
 {
-	s("triangle");
-	//client = arDrone.createClient();
+	s("circle");
+	client = arDrone.createClient();
 });
 
 
