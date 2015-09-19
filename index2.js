@@ -13,6 +13,8 @@ var controller = dualShock(
     });
 
 var client = arDrone.createClient();
+    client.animateLeds('blinkGreen', 5, 2);
+    client.calibrate(0);
 
 function s(msg) {
     console.log(msg);
@@ -20,7 +22,8 @@ function s(msg) {
 
 //make sure you add an error event handler
 controller.on('error', function (data) {
-    s("ERROR: " + data);
+    s("ERROR: ");
+	s(data);
 });
 
 //add event handlers:
@@ -45,6 +48,11 @@ controller.on('square:press', function (data) {
     });
 });
 
+controller.on('triangle:press', function(data)
+{
+	s("triangle");
+	//client = arDrone.createClient();
+});
 
 
 controller.on('triangle:press', function (data) {
