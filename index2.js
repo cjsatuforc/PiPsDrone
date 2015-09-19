@@ -13,9 +13,13 @@ var controller = dualShock(
     });
 
 var client = arDrone.createClient();
+<<<<<<< HEAD
     client.animateLeds('blinkGreen', 5, 2);
     client.calibrate(0);
 
+=======
+client.calibrate(0);
+>>>>>>> 68610ccc9d8953bde30f56269e0c3f58b0aa5755
 function s(msg) {
     console.log(msg);
 }
