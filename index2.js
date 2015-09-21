@@ -13,6 +13,7 @@ var controller = dualShock(
     });
 
 var client = arDrone.createClient();
+client.config('control:altitude_max', 1000);
 client.animateLeds('blinkGreen', 5, 2);
 client.calibrate(0);
 function s(msg) {
@@ -22,7 +23,7 @@ function s(msg) {
 //make sure you add an error event handler
 controller.on('error', function (data) {
     s("ERROR: ");
-	s(data);
+    s(data);
 });
 
 //add event handlers:
@@ -41,6 +42,15 @@ controller.on('connected', function (data) {
 });
 controller.on('square:press', function (data) {
     s("square press: " + data);
+    if (client)
+    {
+    	client.stop();
+    	client.land();
+    }
+    ele
+    {
+    	client = arDrone.createClient();
+    }
     client.animateLeds('blinkGreen', 5, 2);
     client.takeoff(function () {
         hovering = true;
@@ -52,6 +62,12 @@ controller.on('square:press', function (data) {
 controller.on('circle:press', function(data)
 {
 	s("circle");
+	if (client)
+	{
+		client.disableEmergency();
+		client.stop();
+		client.land();
+	}
 	client = arDrone.createClient();
 });
 
