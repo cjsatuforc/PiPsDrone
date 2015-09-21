@@ -15,7 +15,8 @@ var controller = dualShock(
 var client = arDrone.createClient();
 client.config('control:altitude_max', 1000);
 client.animateLeds('blinkGreen', 5, 2);
-client.calibrate(0);
+client.on('navdata', console.log);
+
 function s(msg) {
     console.log(msg);
 }
@@ -32,6 +33,7 @@ controller.on('left:move', function (data) {
     s(data);
     client.left(0.5);
 });
+
 controller.on('right:move', function (data) {
     s("right: ");
     s(data);
@@ -55,7 +57,9 @@ controller.on('square:press', function (data) {
     client.takeoff(function () {
         hovering = true;
         console.log("flying");
+        this.stop();
         this.calibrate(0);
+        
     });
 });
 
